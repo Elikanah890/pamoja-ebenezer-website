@@ -1,0 +1,201 @@
+/* =========================
+   1. IMPORTS (MUST BE FIRST)
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* =========================
+   2. TAILWIND BASE LAYERS
+========================= */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   3. ROOT DESIGN TOKENS
+========================= */
+@layer base {
+  :root {
+    /* Core colors */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 8%;
+
+    --primary: 155 82% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 82% 22%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 140 20% 96%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 220 15% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 140 15% 90%;
+    --input: 140 15% 90%;
+    --ring: 155 82% 24%;
+
+    --radius: 0.75rem;
+
+    /* Custom Brand Colors */
+    --college-green: 155 82% 24%;
+    --college-blue: 222 82% 22%;
+    --college-gold: 38 92% 50%;
+
+    --college-green-light: 155 40% 95%;
+    --college-blue-light: 222 40% 96%;
+    --college-gold-light: 38 80% 95%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(155 82% 24%), hsl(222 82% 22%));
+    --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%), hsl(30 95% 55%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(140 20% 98%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(155 82% 24% / 0.1);
+    --shadow-card-hover: 0 12px 32px -8px hsl(155 82% 24% / 0.2);
+    --shadow-fab: 0 6px 24px -4px hsl(155 82% 24% / 0.35);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Global resets */
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+/* =========================
+   4. COMPONENTS
+========================= */
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-shadow-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .fab-shadow {
+    box-shadow: var(--shadow-fab);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-hero);
+  }
+
+  .touch-feedback {
+    @apply active:scale-[0.98] active:opacity-90 transition-transform duration-100;
+  }
+}
+
+/* =========================
+   5. UTILITIES & ANIMATIONS
+========================= */
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-count-up {
+    animation: countUp 0.4s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out forwards;
+  }
+
+  .animate-slide-out-left {
+    animation: slideOutLeft 0.3s ease-in forwards;
+  }
+}
+
+/* =========================
+   6. KEYFRAMES
+========================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================
+   7. ACCESSIBILITY
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
